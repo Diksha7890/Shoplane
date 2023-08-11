@@ -10,6 +10,7 @@ import WomensClothing from "./Components/WomensCategory";
 import FavouritePage from "./Pages/Favourite_Page.jsx";
 import store from "./ReduxToolkit/store";
 import { Provider } from "react-redux";
+import ProtectiveRoute from "./Components/ProtectiveRoutes";
 function App() {
   return (
     <div className="App">
@@ -26,8 +27,8 @@ function App() {
             />
             <Route path="/signupPage" element={<SignupPage />} />
             <Route path="/LoginPage" element={<LoginPage />} />
-            <Route path="/CartPage" element={<CartPage />} />
-            <Route path="/FavouritePage" element={<FavouritePage />} />
+            <Route path="/CartPage" element={< ProtectiveRoute Component={CartPage} />} />
+            <Route path="/FavouritePage" element={<ProtectiveRoute Component={FavouritePage}/>}/>
           </Routes>
         </Router>
       </Provider>

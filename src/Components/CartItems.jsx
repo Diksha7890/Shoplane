@@ -22,6 +22,7 @@ const CartItems = (props) => {
     } else return str;
   };
   const text = titleLimit(title, 40);
+
   const handleIncrement = (product) => {
     setquantity(quantity + 1);
     dispatch(INCREMENT(product));

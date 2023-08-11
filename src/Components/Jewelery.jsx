@@ -7,14 +7,17 @@ import Navbar from "./Navbar";
 const Jewelery = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    axios
-      .get(EndPoints.JEWELERY_URL)
-      .then((response) => {
-        console.log(response.data);
-        setProducts(response.data);
-      })
-      .catch((error) => console.log(error));
+    fetch();
   }, []);
+  const fetch=()=>{
+    axios
+    .get(EndPoints.JEWELERY_URL)
+    .then((response) => {
+      console.log(response.data);
+      setProducts(response.data);
+    })
+    .catch((error) => console.log(error));
+  }
   return (
     <>
       <Header />

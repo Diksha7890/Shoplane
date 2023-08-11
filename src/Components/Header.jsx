@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 const Header = () => {
+  const [loginStatus, setLoginStatus] = useState(false);
   const navigate = useNavigate();
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) setLoginStatus(true);
+    else setLoginStatus(false);
+  }, []);
   const handleClick = () => navigate("/CartPage");
+  const handleLogout = () => {
+    localStorage.clear("token");
+  };
   const count = useSelector((state) => state.cart.carts.length);
   return (
     <>
@@ -39,9 +48,15 @@ const Header = () => {
             </button>
             <ul class="dropdown-menu">
               <li>
-                <Link class="dropdown-item" to="/LoginPage">
-                  Login
-                </Link>
+                {!loginStatus ? (
+                  <Link class="dropdown-item" to="/LoginPage">
+                    Login
+                  </Link>
+                ) : (
+                  <Link class="dropdown-item" to="/" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                )}
               </li>
               <li>
                 <Link class="dropdown-item" to="/signupPage">

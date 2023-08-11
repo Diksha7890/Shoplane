@@ -21,20 +21,16 @@ const ProductSlice = createSlice({
       const newItem=action.payload;
       state.carts=state.carts.filter((item)=>item.id !==newItem.id);
       state.subTotal-=newItem.price*(state.quantity[newItem.id]);
-      if(state.carts.length===0)state.subTotal=0;
       delete state.quantity[newItem.id];
-
     },
     INCREMENT:(state, action)=>{
      const item=action.payload;
      state.quantity[item.id]++;
      state.subTotal+=item.price;
-
     },
     DECREMENT:(state, action)=>{
-    if(state.subTotal<=0)state.subTotal=0;
-    let item=action.payload;
-    state.quantity[item.id]-=1;
+    const item=action.payload;
+    state.quantity[item.id]--;
     state.subTotal-=item.price;
   }
 }});
