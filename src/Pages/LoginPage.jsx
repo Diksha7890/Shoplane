@@ -48,6 +48,8 @@ const Login = () => {
     <>
       <Header />
       <Navbar />
+      <p>Enter username=johnd</p>
+      <p>password=m38rmF$</p>
       <div className="row">
         <div className="col-md-3"></div>
         <div className="col-md-6">
